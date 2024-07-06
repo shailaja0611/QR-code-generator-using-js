@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR code Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+ *{
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+}
+
+body {
+    background-color: antiquewhite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.qr-container {
+    border-radius: 10px;
+    padding: 20px;
+    width: 500px;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+    background-color: white;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 10px;  
+}
+
+#qr-input {
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+    font-size: 16px;
+    padding: 10px;
+}
+
+#qr-button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.2rem;
+    border: none;
+    background-color: #2ecc71;
+    color: white;
+    margin-bottom: 10px;
+}
+
+#qr-img {
+    display: block;
+    width: 50%;
+    margin: 0 auto;
+
+}   
+    </style>
+</head>
+<body>
+
+    <div class="qr-container">
+        <h2>
+            QR Code Generator
+        </h2>
+
+        <input type="text" id="qr-input" placeholder="Paste your url here or type it out">
+
+        <button id="qr-button">
+            Click here to Generator QR Code
+        </button>
+        <img src="" alt="" id="qr-img">
+    </div>
+
+    <script>
+     const qrinput = document.getElementById('qr-input');
+     const qrimg = document.getElementById('qr-img');
+     const qrbutton = document.getElementById('qr-button');
+
+       console.log(qrinput, qrimg, qrbutton)
+
+       
+       qrbutton.addEventListener('click', () => {
+
+      const inputValue = qrinput.value;
+      console.log(inputValue)    
+
+    if( !inputValue ) {
+        alert('Please enter a valid URL');
+        return;
+    }else{
+        qrimg.src= `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${inputValue}`;
+        arimg.alt = `QR code for ${inputValue}`;
+    }
+
+});
+    </script>
+</body>
+</html>
